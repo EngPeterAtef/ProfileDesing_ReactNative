@@ -27,20 +27,12 @@ function Profile()
 
             <View style={myStyle.body}>
                 <View style={myStyle.info}>
-                    <View>
-                    <Text style={myStyle.personal}>peter.atef2000@gmail.com</Text>
-                    </View>
-                    <View>
-                    <Text style={myStyle.personal}>01208216216</Text>
-                    </View>
-                    <View>
-                    <Text style={myStyle.personal}>Add To Group</Text>
-                    </View>
-                    <View>
-                    <Text style={myStyle.personal}>Show Comments</Text>
-                    </View>
+                        <Text style={myStyle.personal}>peter.atef2000@gmail.com</Text>
+                        <Text style={myStyle.personal}>01208216216</Text>
+                        <Text style={myStyle.personal}>Add To Group</Text>
+                        <Text style={myStyle.personal}>Show Comments</Text>
                 </View>
-                <Button title="Follow me"/>
+                <Button title="Follow me" style={myStyle.btn}/>
             </View>
         </View>
     )
@@ -118,6 +110,8 @@ const myStyle = StyleSheet.create({
         fontSize:15,
         fontWeight:'bold',
         // display:'flex',
+        // height:50,
+        lineHeight: 50,   
     }
 });
 
