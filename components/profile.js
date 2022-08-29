@@ -24,23 +24,24 @@ function Profile()
                     <Text style={myStyle.data}>400</Text>
                 </View>
             </View>
+
             <View style={myStyle.body}>
                 <View style={myStyle.info}>
                     <View>
-                        <Text>peter.atef2000@gmail.com</Text>
+                    <Text style={myStyle.personal}>peter.atef2000@gmail.com</Text>
                     </View>
                     <View>
-                        <Text>01208216216</Text>
+                    <Text style={myStyle.personal}>01208216216</Text>
                     </View>
                     <View>
-                        <Text>Add To Group</Text>
+                    <Text style={myStyle.personal}>Add To Group</Text>
                     </View>
                     <View>
-                        <Text>Show Comments</Text>
+                    <Text style={myStyle.personal}>Show Comments</Text>
                     </View>
                 </View>
-                </View>
-            <Button title="Follow me"/>
+                <Button title="Follow me"/>
+            </View>
         </View>
     )
 }
@@ -57,11 +58,12 @@ const myStyle = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-around',
         alignItems: 'center',
-        height: 150,
+        height: 100,
         borderRadius:25,
         elevation:20,
         backgroundColor:"white",
         width:300,
+        marginTop:-50,
     },
     col:{
         flexDirection:'column',
@@ -103,11 +105,19 @@ const myStyle = StyleSheet.create({
         flex:4,
         flexDirection:'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
     },
     info:{
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
+        flexDirection:'column',
+        alignItems: 'stretch',
+        justifyContent: 'space-between',
+    },
+    personal:
+    {
+        color:'grey',
+        fontSize:15,
+        fontWeight:'bold',
+        // display:'flex',
     }
 });
 
