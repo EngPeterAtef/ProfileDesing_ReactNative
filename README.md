@@ -1,4 +1,4 @@
-# firstTask
+# Profile Using React_Native
 <div>
-  <img src ="D:\projects\React\firstTask\assets\final.png">
+            <img src="./assets/final.png" title="profile">
 </div>
