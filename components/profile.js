@@ -2,31 +2,37 @@ import {Text,View,StyleSheet,Image,Button} from "react-native";
 import React,{useState} from 'react';
 function Profile()
 {
+    const[user,setInfo] = useState({
+        name:'Peter Atef',
+        email:'peter.atef2000@gmail.com',
+        phno:'01208216216',
+    });
     const[myMode,setMode] = useState("#1BFFFF");
-    const[otherMode,setMode2] = useState("black");
     const[count,setCount] = useState(0);
     function changeMode(){
         if (myMode=="#1BFFFF")
         {
             setMode("black");
-            setMode2("gray");
         }
         else{
             setMode("#1BFFFF");
-            setMode2("black");
         }
     }
     function addFollower() { 
         setCount(count +1);
-     }
+    }
+    function changeInfo () {
+        setInfo({...user,name:'patoraa'});
+    }
     return(
         <View style={myStyle.cont}>
             <View style={myStyle.pic}>
                 <View style={myStyle.mod}>
-                    <Button title="mode" color={otherMode} onPress={changeMode}/>
+                    <Button title="mode" color='grey' onPress={changeMode}/>
+                    <Button title="edit" color='grey' onPress={changeInfo}/>
                 </View>
                 <Image source = {require("D:/projects/React/firstTask/assets/me.jpg")} style={myStyle.img}/>
-                <Text style={myStyle.name}>Peter Atef</Text>
+                <Text style={myStyle.name}>{user.name}</Text>
             </View>
             <View style={myStyle.card}>
                 <View style={myStyle.col}>
@@ -45,8 +51,8 @@ function Profile()
 
             <View style={myStyle.body}>
                 <View style={myStyle.info}>
-                        <Text style={myStyle.personal}>peter.atef2000@gmail.com</Text>
-                        <Text style={myStyle.personal}>01208216216</Text>
+                        <Text style={myStyle.personal}>{user.email}</Text>
+                        <Text style={myStyle.personal}>{user.phno}</Text>
                         <Text style={myStyle.personal}>Add To Group</Text>
                         <Text style={myStyle.personal}>Show Comments</Text>
                 </View>
@@ -65,9 +71,10 @@ let myStyle = StyleSheet.create({
     },
     mod:
     {
-        backgroundColor:'black',
-        marginRight:300,
-        marginTop:-50,
+        position:'absolute',
+        flexDirection:'row',
+        top:20,
+        left:70,
     },
     card:
     {
