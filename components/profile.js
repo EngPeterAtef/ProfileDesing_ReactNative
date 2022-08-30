@@ -1,13 +1,31 @@
 import {Text,View,StyleSheet,Image,Button} from "react-native";
-import React from 'react';
+import React,{useState} from 'react';
 function Profile()
 {
+    const[myMode,setMode] = useState("#1BFFFF");
+    const[otherMode,setMode2] = useState("black");
+    const[count,setCount] = useState(0);
+    function changeMode(){
+        if (myMode=="#1BFFFF")
+        {
+            setMode("black");
+            setMode2("gray");
+        }
+        else{
+            setMode("#1BFFFF");
+            setMode2("black");
+        }
+    }
+    function addFollower() { 
+        setCount(count +1);
+     }
     return(
         <View style={myStyle.cont}>
             <View style={myStyle.pic}>
+                <View style={myStyle.mod}>
+                    <Button title="mode" color={otherMode} onPress={changeMode}/>
+                </View>
                 <Image source = {require("D:/projects/React/firstTask/assets/me.jpg")} style={myStyle.img}/>
-
-                
                 <Text style={myStyle.name}>Peter Atef</Text>
             </View>
             <View style={myStyle.card}>
@@ -17,7 +35,7 @@ function Profile()
                 </View>
                 <View style={myStyle.col}>
                     <Text style={myStyle.title}>Followers</Text>
-                    <Text style={myStyle.data}>24414</Text>
+                    <Text style={myStyle.data}>{count}</Text>
                 </View>
                 <View style={myStyle.col}>
                     <Text style={myStyle.title}>Following</Text>
@@ -32,18 +50,24 @@ function Profile()
                         <Text style={myStyle.personal}>Add To Group</Text>
                         <Text style={myStyle.personal}>Show Comments</Text>
                 </View>
-                <Button title="Follow me" style={myStyle.btn}/>
+                <Button title="Follow me" color= {myMode} onPress={addFollower}/>
             </View>
         </View>
     )
 }
 
-const myStyle = StyleSheet.create({
+let myStyle = StyleSheet.create({
     cont:
     {
         marginTop:30, 
         alignItems:'center',
         justifyContent:'space-between',
+    },
+    mod:
+    {
+        backgroundColor:'black',
+        marginRight:300,
+        marginTop:-50,
     },
     card:
     {
@@ -68,13 +92,13 @@ const myStyle = StyleSheet.create({
         fontWeight:'bold',
     },
     data:{
-        color:"#4BFFFF",
+        color:"#1BFFFF",
         fontSize:15,
     },
     pic:
     {
         flex:3,
-        backgroundColor: "#4BFFFF",
+        backgroundColor: "#1BFFFF",
         flexDirection: "column",
         justifyContent: 'center',
         alignItems: 'center',
