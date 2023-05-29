@@ -31,7 +31,7 @@ function Profile()
                     <Button title="mode" color='grey' onPress={changeMode}/>
                     <Button title="edit" color='grey' onPress={changeInfo}/>
                 </View>
-                <Image source = {require("D:/projects/React/firstTask/assets/me.jpg")} style={myStyle.img}/>
+                <Image source = {require("../assets/me.jpg")} style={myStyle.img}/>
                 <Text style={myStyle.name}>{user.name}</Text>
             </View>
             <View style={myStyle.card}>
