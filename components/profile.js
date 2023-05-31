@@ -2,13 +2,7 @@ import {Text,View,StyleSheet,Image,Button} from "react-native";
 import React,{useState} from 'react';
 function Profile()
 {
-    const[user,setInfo] = useState({
-        name:'Peter Atef',
-        email:'peter.atef2000@gmail.com',
-        phno:'01208216216',
-    });
     const[myMode,setMode] = useState("#1BFFFF");
-    const[count,setCount] = useState(0);
     function changeMode(){
         if (myMode=="#1BFFFF")
         {
@@ -18,43 +12,53 @@ function Profile()
             setMode("#1BFFFF");
         }
     }
+    const[user,setInfo] = useState({
+        name:'Peter Atef',
+        email:'peter.atef2000@gmail.com',
+        phone_num:'01208216216',
+    });
+    const[count,setCount] = useState(() =>{
+        // console.log("hello");
+        return 0;
+    });
     function addFollower() { 
         setCount(count +1);
     }
     function changeInfo () {
         setInfo({...user,name:'patoraa'});
     }
+    const styles = myStyle(myMode);
     return(
-        <View style={myStyle.cont}>
-            <View style={myStyle.pic}>
-                <View style={myStyle.mod}>
+        <View style={styles.cont}>
+            <View style={styles.pic}>
+                <View style={styles.mod}>
                     <Button title="mode" color='grey' onPress={changeMode}/>
                     <Button title="edit" color='grey' onPress={changeInfo}/>
                 </View>
-                <Image source = {require("../assets/me.jpg")} style={myStyle.img}/>
-                <Text style={myStyle.name}>{user.name}</Text>
+                <Image source = {require("../assets/me.jpg")} style={styles.img}/>
+                <Text style={styles.name}>{user.name}</Text>
             </View>
-            <View style={myStyle.card}>
-                <View style={myStyle.col}>
-                    <Text style={myStyle.title}>Photos</Text>
-                    <Text style={myStyle.data}>23</Text>
+            <View style={styles.card}>
+                <View style={styles.col}>
+                    <Text style={styles.title}>Photos</Text>
+                    <Text style={styles.data}>23</Text>
                 </View>
-                <View style={myStyle.col}>
-                    <Text style={myStyle.title}>Followers</Text>
-                    <Text style={myStyle.data}>{count}</Text>
+                <View style={styles.col}>
+                    <Text style={styles.title}>Followers</Text>
+                    <Text style={styles.data}>{count}</Text>
                 </View>
-                <View style={myStyle.col}>
-                    <Text style={myStyle.title}>Following</Text>
-                    <Text style={myStyle.data}>400</Text>
+                <View style={styles.col}>
+                    <Text style={styles.title}>Following</Text>
+                    <Text style={styles.data}>400</Text>
                 </View>
             </View>
 
-            <View style={myStyle.body}>
-                <View style={myStyle.info}>
-                        <Text style={myStyle.personal}>{user.email}</Text>
-                        <Text style={myStyle.personal}>{user.phno}</Text>
-                        <Text style={myStyle.personal}>Add To Group</Text>
-                        <Text style={myStyle.personal}>Show Comments</Text>
+            <View style={styles.body}>
+                <View style={styles.info}>
+                        <Text style={styles.personal}>{user.email}</Text>
+                        <Text style={styles.personal}>{user.phone_num}</Text>
+                        <Text style={styles.personal}>Add To Group</Text>
+                        <Text style={styles.personal}>Show Comments</Text>
                 </View>
                 <Button title="Follow me" color= {myMode} onPress={addFollower}/>
             </View>
@@ -62,7 +66,7 @@ function Profile()
     )
 }
 
-let myStyle = StyleSheet.create({
+let myStyle = (mode) => StyleSheet.create({
     cont:
     {
         marginTop:30, 
@@ -99,13 +103,13 @@ let myStyle = StyleSheet.create({
         fontWeight:'bold',
     },
     data:{
-        color:"#1BFFFF",
+        color:mode,
         fontSize:15,
     },
     pic:
     {
         flex:3,
-        backgroundColor: "#1BFFFF",
+        backgroundColor: mode,
         flexDirection: "column",
         justifyContent: 'center',
         alignItems: 'center',
